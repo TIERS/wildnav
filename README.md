@@ -7,12 +7,12 @@ GNSS-Free drone navigation and localization in the wild
 How to run:
 
    1. Clone repo
-   ```
-   git@github.com:TIERS/wildnav.git
-   ```
+      ```
+      git@github.com:TIERS/wildnav.git
+      ```
    3. Add superglue dependencies:
-   ```
+      ```
       git submodule init
       git submodule update
-   ```
+      ```
    3. TODO
