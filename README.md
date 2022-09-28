@@ -1,2 +1,2 @@
 # wildnav
-GNSS-Free drone navigation and localization in the wild lidar
+GNSS-Free drone navigation and localization in the wild
