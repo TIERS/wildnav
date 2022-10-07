@@ -9,12 +9,12 @@ Considering the accelerated development of Unmanned Aerial Vehicles (UAVs) appli
 ![Overview](https://raw.githubusercontent.com/TIERS/wildnav/main/assets/overview/project_overview.png)
 
 <div align=center>
-<img src="assets/overview/project_overview.png" width="500px">
+<img src="assets/overview/project_overview.png" width="800px">
 <p align="center">Vision-based localization algorithm overview </p>
 </div>
 
 <div align=center>
-<img src="assets/overview/good_match_examples.png" width="500px">
+<img src="assets/overview/good_match_examples.png" width="800px">
 <p align="center">Examples of successfully matched drones photographs (left) and satellite
 images (right) </p>
 </div>
@@ -47,7 +47,7 @@ images (right) </p>
 Photographs used for experimental validation of the algorithm can be found [here](https://utufi.sharepoint.com/:f:/s/msteams_0ed7e9/EsXaX0CKlpxIpOzVnUmn8-sB4yvmsxUohqh1d8nWKD9-BA?e=gPca2s).
 
 <div align=center>
-<img src="assets/overview/experiments_flight_area.png" width="500px">
+<img src="assets/overview/experiments_flight_area.png" width="800px">
 <p align="center">Satellite view of the flight zone (highlighted rectangle). The yellow pin is
 located at 60.403091° latitude and 22.461824° longitude </p>
 </div>
@@ -67,26 +67,26 @@ located at 60.403091° latitude and 22.461824° longitude </p>
 
 
 <div align=center>
-<img src="assets/overview/dataset_1_abs_coord.png" width="500px">
+<img src="assets/overview/dataset_1_abs_coord.png" width="800px">
 <p align="center">Dataset 1 absolute coordinates of localized photographs </p>
 </div>
 
 <div align=center>
-<img src="assets/overview/dataset_1_error.png" width="500px">
+<img src="assets/overview/dataset_1_error.png" width="800px">
 <p align="center">Dataset 1 localization error </p>
 </div>
 
 <div align=center>
-<img src="assets/overview/dataset_2_abs_coord.png" width="500px">
+<img src="assets/overview/dataset_2_abs_coord.png" width="800px">
 <p align="center">Dataset 2 absolute coordinates of localized photographs</p>
 </div>
 
 <div align=center>
-<img src="assets/overview/dataset_2_error.png" width="500px">
+<img src="assets/overview/dataset_2_error.png" width="800px">
 <p align="center">Dataset 2 localization error </p>
 </div>
 
 <div align=center>
-<img src="assets/overview/error_comparison.png" width="500px">
+<img src="assets/overview/error_comparison.png" width="800px">
 <p align="center">Error comparison </p>
 </div>
