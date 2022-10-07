@@ -6,8 +6,6 @@ Considering the accelerated development of Unmanned Aerial Vehicles (UAVs) appli
 
 ### Algorithm Overview
 
-![Overview](https://raw.githubusercontent.com/TIERS/wildnav/main/assets/overview/project_overview.png)
-
 <div align=center>
 <img src="assets/overview/project_overview.png" width="800px">
 <p align="center">Vision-based localization algorithm overview </p>
@@ -60,7 +58,7 @@ located at 60.403091° latitude and 22.461824° longitude </p>
 |           	| Total 	| Localized 	| MAE (m) 	|
 |:---------:	|:-----:	|:---------:	|:-------:	|
 | Dataset 1 	|  124  	|  77 (62%) 	|  15.82  	|
-| Dataset 2 	|   78  	|  77 (62%) 	|  26.58  	|
+| Dataset 2 	|   78  	|  44 (56%) 	|  26.58  	|
 
 </div>
 
