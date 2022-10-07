@@ -34,5 +34,21 @@ Photographs used for experimental validation of the algorithm can be found [here
 
 ## Results
 
-![Dataset 1 absolute coordinates]((https://raw.githubusercontent.com/TIERS/wildnav/main/assets/overview/dataset_1_abs_coord.png)
+|           	| Total 	| Localized 	| MAE (m) 	|
+|:---------:	|:-----:	|:---------:	|:-------:	|
+| Dataset 1 	|  124  	|  77 (62%) 	|  15.82  	|
+| Dataset 2 	|   78  	|  77 (62%) 	|  26.58  	|
+
+![Dataset 1 absolute coordinates](assets/overview/dataset_1_abs_coord.png)
+
+<div align=center>
+<img src="assets/overview/dataset_1_abs_coord.png" width="500px">
+<p align="center">Dataset 1 absolute coordinates of localized photographs </p>
+
+![Dataset 1 error](assets/overview/dataset_1_error.png)
+
+![Dataset 2 absolute coordinates](assets/overview/dataset_2_abs_coord.png)
+
 ![Dataset 1 error](assets/overview/dataset_2_error.png)
+
+![Error comparison](assets/overview/error_comaprison.png)
