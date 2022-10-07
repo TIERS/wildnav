@@ -16,7 +16,7 @@ How to run:
 
    1. Clone repo
       ```
-      git@github.com:TIERS/wildnav.git
+      git clone git@github.com:TIERS/wildnav.git
       ```
    3. Install superglue dependencies:
       ```
@@ -26,6 +26,11 @@ How to run:
    3. Install python dependencies
       ```
       pip3 install -r requirements.txt
+      ```
+   4. Run
+      ```
+      cd src
+      python3 feature_matching_superglue.py
       ```
 
 ## Datasets
