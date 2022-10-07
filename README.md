@@ -6,8 +6,6 @@ Considering the accelerated development of Unmanned Aerial Vehicles (UAVs) appli
 
 ### Algorithm Overview
 
-![Overview](https://raw.githubusercontent.com/TIERS/wildnav/main/assets/overview/project_overview.png)
-
 <div align=center>
 <img src="assets/overview/project_overview.png" width="500px">
 <p align="center">Vision-based localization algorithm overview </p>
