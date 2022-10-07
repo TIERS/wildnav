@@ -58,7 +58,7 @@ located at 60.403091° latitude and 22.461824° longitude </p>
 |           	| Total 	| Localized 	| MAE (m) 	|
 |:---------:	|:-----:	|:---------:	|:-------:	|
 | Dataset 1 	|  124  	|  77 (62%) 	|  15.82  	|
-| Dataset 2 	|   78  	|  77 (62%) 	|  26.58  	|
+| Dataset 2 	|   78  	|  44 (56%) 	|  26.58  	|
 
 </div>
 
