@@ -35,3 +35,4 @@ Photographs used for experimental validation of the algorithm can be found [here
 ## Results
 
 ![Dataset 1 absolute coordinates]((https://raw.githubusercontent.com/TIERS/wildnav/main/assets/overview/dataset_1_abs_coord.png)
+![Dataset 1 error](assets/overview/dataset_2_error.png)
