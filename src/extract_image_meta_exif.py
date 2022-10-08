@@ -3,9 +3,9 @@ import re
 import os
 
 
-csv_filename = "matrice_session_2.csv"
+csv_filename = 'photo_metadata.csv'
 
-photo_folder = '/home/marius/Desktop/Thesis_gl_hf/Wild_Nav_Master_Thesis/photos/query/real_dataset_1/matrice_300_session_2/'
+photo_folder = '../assets/query/'
  
 csv_filename = photo_folder + csv_filename
 
