@@ -23,7 +23,9 @@ def load_images_from_folder(folder):
 
     images_list.sort()
     return images_list
-    
+
+def test_answer():
+    assert load_images_from_folder(photo_folder) == 5 
 
 
 images_list = load_images_from_folder(photo_folder)

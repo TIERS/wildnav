@@ -1,22 +1,20 @@
-
 import numpy as np
-import cv2 
-import matplotlib.pyplot as plt
+import cv2
 import csv
 import superglue_utils
-import time
-import color_mask
-import imutils
 
 import haversine as hs
 from haversine import Unit
 
 CSV_FLAG = False
 
+
 class GeoPhotoDrone:
-    """Stores a drone photo together with GNSS location and camera rotation parameters
+    """Stores a drone photo together with GNSS location
+    and camera rotation parameters
     """
-    def __init__(self, filename, photo = 0, latitude = 0, longitude = 0 , altitude = 0 ,gimball_roll = 0, gimball_yaw = 0, gimball_pitch = 0, flight_roll = 0, flight_yaw = 0, flight_pitch = 0):
+    def __init__(self,filename, photo=0, latitude=0, longitude = 0 ,\
+         altitude = 0 ,gimball_roll = 0, gimball_yaw = 0, gimball_pitch = 0, flight_roll = 0, flight_yaw = 0, flight_pitch = 0):
         self.filename = filename
         self.photo = photo
         self.latitude = latitude
@@ -231,8 +229,3 @@ print(latitude_truth)
 print(longitude_truth)
 print(latitude_calculated)
 print(longitude_calculated)
-
-#csv_write_image_location(drone_images_list)
-
-
-
