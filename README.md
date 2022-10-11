@@ -27,8 +27,7 @@ images (right) </p>
       ```
    3. Install superglue dependencies:
       ```
-      git submodule init
-      git submodule update
+      git submodule update --init --recursive
       ```
    3. Install python dependencies
       ```
@@ -36,8 +35,7 @@ images (right) </p>
       ```
    4. Run
       ```
-      cd src
-      python3 feature_matching_superglue.py
+      python3 src/feature_matching_superglue.py
       ```
 
 ## Datasets
