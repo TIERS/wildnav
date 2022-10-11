@@ -21,6 +21,12 @@ images (right) </p>
 
 ## How to run
 
+   0. [Highly recommended) Create a new python3 virtual environment
+      ```
+      python3 -m venv env 
+      source env/bin/activate # activate the virtual env
+      which python3 # output should be ~/env/bin/python3
+      ```
    1. Clone repo
       ```
       git clone git@github.com:TIERS/wildnav.git
