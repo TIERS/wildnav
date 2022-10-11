@@ -35,8 +35,7 @@ images (right) </p>
       ```
    4. Run
       ```
-      cd src
-      python3 feature_matching_superglue.py
+      python3 src/feature_matching_superglue.py
       ```
 
 ## Datasets
