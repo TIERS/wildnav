@@ -5,8 +5,8 @@ import torch
 import numpy as np
 
 
-from superglue_dependencies.models.matching import Matching
-from superglue_dependencies.models.utils import (AverageTimer, VideoStreamer,
+from superglue_lib.models.matching import Matching
+from superglue_lib.models.utils import (AverageTimer, VideoStreamer,
                           make_matching_plot_fast, frame2tensor)
 
 torch.set_grad_enabled(False)
