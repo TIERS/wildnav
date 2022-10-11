@@ -55,7 +55,7 @@ def csv_read_drone_images(filename):
     "big_photo_2.png",60.506787,22.311631,60.501037,22.324467
     """
     geo_list_drone = []
-    photo_path = "../photos/query/real_dataset_1/matrice_300_session_2/"
+    photo_path = "../assets/query/"
     with open(filename) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
@@ -78,7 +78,8 @@ def csv_read_sat_map(filename):
     "big_photo_2.png",60.506787,22.311631,60.501037,22.324467
     """
     geo_list = []
-    photo_path = "../photos/map/real_dataset_matrice_2/"
+    photo_path = "../assets/map/"
+    print("opening: ",filename)
     with open(filename) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
@@ -134,10 +135,12 @@ def calculate_geo_pose(geo_photo, center, features_mean,  shape):
 
 
 #Read all the geo tagged images that make up the sattelite map used for reference
-geo_images_list = csv_read_sat_map("../photos/map/real_dataset_matrice_2/map.csv")
+map_filename = "../assets/map/map.csv"
+print("opening: ", map_filename)
+geo_images_list = csv_read_sat_map(map_filename)
 #drone_images_list = csv_read_drone_images("../photos/query/real_dataset_1/matrice_300_session_1/drone_image_test.csv")
-drone_images_list = csv_read_drone_images("../photos/query/real_dataset_1/matrice_300_session_2/matrice_session_2.csv")
-print(drone_images_list[7])
+drone_images_list = csv_read_drone_images("../assets/query/photo_metadata.csv")
+print(drone_images_list[0])
 #drone_image = cv2.imread("../photos/query/real_dataset_1/matrice_300_session_1/photo_2.JPG", 0)
 
 #write the query image to the map folder
@@ -171,7 +174,7 @@ for drone_image in drone_images_list:
         #photo = imutils.rotate(photo, drone_image.gimball_yaw + drone_image.flight_yaw - 15)
         #photo = imutils.rotate(photo, -300 )
         
-        cv2.imwrite("../photos/map/real_dataset_matrice_2/1_query_image.png", photo)
+        cv2.imwrite("../assets/map/1_query_image.png", photo)
         
         print(drone_image.gimball_yaw + drone_image.flight_yaw)
         #input("Rotation")
@@ -188,7 +191,7 @@ for drone_image in drone_images_list:
     if center != None and located:        
         current_location = calculate_geo_pose(geo_images_list[satellite_map_index], center, features_mean, query_image.shape )
         #cv2.putText(located_image, str(current_location), org = (10,625),fontFace =  cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.8,  color = (0, 0, 0))
-        cv2.imwrite("../results/matrice_session_2/" + photo_name + "_result.png", located_image)
+        cv2.imwrite("../results/" + photo_name + "_result.png", located_image)
         cv2.imwrite("test_image_loc.png", located_image)
         print("Ground Truth: ", drone_image.latitude, drone_image.longitude)
         print("Located", photo_name,  center, satellite_map_index, features_mean)

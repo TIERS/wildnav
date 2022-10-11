@@ -14,19 +14,22 @@ torch.set_grad_enabled(False)
 
 def match_image(): 
     center = None
-    input = '../photos/map/real_dataset_matrice_2'
+    input = '../assets/map/'
     output_dir = "../results"
     image_glob = ['*.png', '*.jpg', '*.jpeg', '*.JPG']
     skip = 1
     max_length = 1000000
-    resize = [800]
-    superglue = 'outdoor'
-    max_keypoints = -1 # -1 keep all keypoints
-    keypoint_threshold = 0.01
-    nms_radius = 4
-    sinkhorn_iterations = 20
-    match_threshold = 0.5 # 0.2 in paper
-    show_keypoints = False
+
+
+    # Important parameters to modify if you wish to improve the feature matching performance. 
+    resize = [800] # Resize the image to this size before processing. Set to None to disable resizing.
+    superglue = 'outdoor' # The SuperGlue model to use. Either 'indoor' or 'outdoor'.
+    max_keypoints = -1 # -1 keep all keypoints  
+    keypoint_threshold = 0.01 # Remove keypoints with low confidence. Set to -1 to keep all keypoints.
+    nms_radius = 4 # Non-maxima suppression: keypoints with similar responses in a small neighborhood are removed.
+    sinkhorn_iterations = 20 # Number of Sinkhorn iterations for matching.
+    match_threshold = 0.5 # Remove matches with low confidence. Set to -1 to keep all matches.
+    show_keypoints = True # Show the detected keypoints.
     no_display = True
     
    
