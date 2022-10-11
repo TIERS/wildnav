@@ -27,8 +27,7 @@ images (right) </p>
       ```
    3. Install superglue dependencies:
       ```
-      git submodule init
-      git submodule update
+      git submodule update --init --recursive
       ```
    3. Install python dependencies
       ```
