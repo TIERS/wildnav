@@ -2,14 +2,21 @@ import subprocess
 import re
 import os
 
+############################################################################################################
+# Script that reads the EXIF data from the drone images and extracts the GNSS coordinates to a csv file
+# You might have to modify the scripts to match the EXIF metadata of your drone photos 
+# Use https://www.metadata2go.com/ to easily check the metadata of your images
+############################################################################################################
 
-csv_filename = 'photo_metadata.csv'
-
-photo_folder = '../assets/query/'
+csv_filename = 'photo_metadata.csv' # csv file with drone image metadata containing GNSS location
+photo_folder = '../assets/query/' # folder with drone images
  
 csv_filename = photo_folder + csv_filename
 
 def convert_gnss_coord(lat_or_lon):
+    """
+    Convert GNSS coordinate to decimal degrees instead of minutes and seconds
+    """
     deg, deg_string, minutes,discard_1,  seconds, discard_2, direction =  re.split('[\s°\'"]', lat_or_lon)
     converted = (float(deg) + float(minutes)/60 + float(seconds)/(60*60)) * (-1 if direction in ['W', 'S'] else 1)
     return str(converted)
@@ -24,12 +31,7 @@ def load_images_from_folder(folder):
     images_list.sort()
     return images_list
 
-def test_answer():
-    assert load_images_from_folder(photo_folder) == 5 
-
-
 images_list = load_images_from_folder(photo_folder)
-#print(images_list)
 
 f = open(csv_filename, "a")
 
@@ -49,7 +51,7 @@ for image in images_list:
         infoDict[line[0].strip()] = line[-1].strip()
         print(line[0].strip())
 
-    print ("################################################3")
+    print ("################################################")
 
     #Default values
     altitude = "NaN"
@@ -60,8 +62,6 @@ for image in images_list:
     flight_yaw = "NaN"
     flight_pitch = "NaN"
 
-
-    #print(infoDict['GPS Altitude'])
     print(infoDict['File Name'])
     if 'File Name' in infoDict:
         filename = infoDict['File Name']
