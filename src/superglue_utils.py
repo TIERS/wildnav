@@ -137,7 +137,7 @@ def match_image():
         """
         #At least 4 matched features are needed to compute homography
         MATCHED = False
-        print("Number of matches:", len(mkpts1))
+        print("Matches found:", len(mkpts1))
         if (len(mkpts1) >= 4): 
             perspective_tranform_error = False           
             M, mask = cv2.findHomography(mkpts0, mkpts1, cv2.RANSAC,5.0)
@@ -146,11 +146,10 @@ def match_image():
             try: 
                 dst = cv2.perspectiveTransform(pts,M)
             except:
-                print("Perspective transform error")
+                print("Perspective transform error. Abort matching.")
                 perspective_tranform_error = True    
 
-            if (len(mkpts1) > max_matches) and not perspective_tranform_error:   
-                print("Rectangle ", dst)
+            if (len(mkpts1) > max_matches) and not perspective_tranform_error: 
                 frame = cv2.polylines(frame,[np.int32(dst)],True,255,3, cv2.LINE_AA) 
                 moments = cv2.moments(dst)
                 cX = int(moments["m10"] / moments["m00"])
