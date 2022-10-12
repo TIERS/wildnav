@@ -63,7 +63,7 @@ Follow instructions on the official [pytorch](https://pytorch.org/get-started/lo
 **Fix:**
 
 
-The algorithm can run, albeit much slower, on CPU. Simple change ```force_cpu``` flag in ```src/superglue_utils``` to ```True```.
+The algorithm can run, albeit much slower, on CPU. Simply change ```force_cpu``` flag in ```src/superglue_utils``` to ```True```.
 
 
 ## Datasets
