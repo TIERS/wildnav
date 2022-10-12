@@ -49,6 +49,7 @@ The main advantage of Wildnav is its capability of matching drone images (left) 
       ```
    3. Install superglue dependencies:
       ```
+      cd wildnav
       git submodule update --init --recursive
       ```
    3. Install python dependencies
