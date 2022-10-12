@@ -1,5 +1,5 @@
 ![ubuntu label](https://img.shields.io/badge/Ubuntu-20.04-brightgreen)
-![build passing label](https://img.shields.io/badge/build-passing-brightgreen)
+[![build passing label](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/TIERS/wildnav/actions/workflows/python-app.yml)
 # WildNav: GNSS-Free drone navigation and localization in the wild
 
 ###  Abstract
