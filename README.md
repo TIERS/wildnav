@@ -39,6 +39,9 @@ The main advantage of Wildnav is its capability of matching drone images (left) 
 
 ## How to run
 
+The algorithm was tested on Ubuntu 20.04 with Python 3.10. Nevertheless, it should work with other versions as well.
+
+
    0. **(Highly recommended)** Create a new python3 virtual environment
       ```
       python3 -m venv env 
