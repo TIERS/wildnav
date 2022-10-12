@@ -45,6 +45,27 @@ images (right) </p>
       python3 feature_matching_superglue.py
       ```
 
+## Common problems and fixes
+
+1. Runtime error due to incompatible version of ```torch``` installed
+Error message: "NVIDIA GeForce RTX 3070 with CUDA capability sm_86 is not compatible with the current PyTorch installation. The current PyTorch install supports CUDA capabilities sm_37 sm_50 sm_60 sm_70.If you want to use the NVIDIA GeForce RTX 3070 GPU with PyTorch."
+
+**Fix:**
+
+Uninstall current torch installation:
+```
+pip3 uninstall torch
+```
+Follow instructions on the official [pytorch](https://pytorch.org/get-started/locally/) website to install the right version of torch for your system (it depends on your graphics card and CUDA version).
+
+2. No dedicated GPU available on your system.
+
+**Fix:**
+
+
+The algorithm can run, albeit much slower, on CPU. Simply change ```force_cpu``` flag in ```src/superglue_utils``` to ```True```.
+
+
 ## Datasets
 
 Photographs used for experimental validation of the algorithm can be found [here](https://utufi.sharepoint.com/:f:/s/msteams_0ed7e9/EsXaX0CKlpxIpOzVnUmn8-sB4yvmsxUohqh1d8nWKD9-BA?e=gPca2s).
