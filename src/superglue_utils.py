@@ -13,6 +13,9 @@ torch.set_grad_enabled(False)
 
 
 def match_image(): 
+    """
+    Wrapper function for matching two images, provides an interface to superglue model
+    """
     center = None
     input = '../assets/map/'
     output_dir = "../results"
