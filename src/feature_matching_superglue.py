@@ -6,9 +6,19 @@ import superglue_utils
 import haversine as hs
 from haversine import Unit
 
-CSV_FLAG = False
+############################################################################################################
+# Important variables
+############################################################################################################
 
+map_filename = "../assets/map/map.csv" #  csv file with the sattelite geo tagged images
+drone_photos_filename = "../assets/query/photo_metadata.csv" # csv file with the geo tagged drone images;
+                                                             # the geo coordinates are only used to compare
+                                                             # the calculated coordinates with the real ones
+                                                             # after the feature matching
 
+############################################################################################################
+# Class definitios
+############################################################################################################
 class GeoPhotoDrone:
     """Stores a drone photo together with GNSS location
     and camera rotation parameters
@@ -49,10 +59,14 @@ class GeoPhoto:
     def __str__(self):
         return "%s; \n\ttop_left_latitude: %f \n\ttop_left_lon: %f \n\tbottom_right_lat: %f \n\tbottom_right_lon %f " % (self.filename, self.top_left_coord[0], self.top_left_coord[1], self.bottom_right_coord[0], self.bottom_right_coord[1])
 
+
+############################################################################################################
+# Functions for data writing and reading csv files
+############################################################################################################
 def csv_read_drone_images(filename):
     """Builds a list with drone geo tagged photos by reading a csv file with this format:
     Filename, Top_left_lat,Top_left_lon,Bottom_right_lat,Bottom_right_long
-    "big_photo_2.png",60.506787,22.311631,60.501037,22.324467
+    "photo_name.png",60.506787,22.311631,60.501037,22.324467
     """
     geo_list_drone = []
     photo_path = "../assets/query/"
@@ -73,9 +87,9 @@ def csv_read_drone_images(filename):
         return geo_list_drone
 
 def csv_read_sat_map(filename):
-    """Builds a list with geo tagged photos by reading a csv file with this format:
+    """Builds a list with satellite geo tagged photos by reading a csv file with this format:
     Filename, Top_left_lat,Top_left_lon,Bottom_right_lat,Bottom_right_long
-    "big_photo_2.png",60.506787,22.311631,60.501037,22.324467
+    "photo_name.png",60.506787,22.311631,60.501037,22.324467
     """
     geo_list = []
     photo_path = "../assets/map/"
@@ -101,12 +115,8 @@ def csv_read_sat_map(filename):
     
 def csv_write_image_location(photo):
     header = ['Filename', 'Latitude', 'Longitude', 'Calculated_Latitude', 'Calculated_Longitude', 'Latitude_Error', 'Longitude_Error', 'Meters_Error', 'Corrected', 'Matched']
-    with open('calculated_coordinates_real_data_2.csv', 'a', encoding='UTF8') as f:
-        writer = csv.writer(f)
-        # if  not CSV_FLAG:
-        #     writer.writerow(header)
-        #     CSV_FLAG = True
-        
+    with open('../results/calculated_coordinates.csv', 'a', encoding='UTF8') as f:
+        writer = csv.writer(f)        
         photo_name = photo.filename.split("/")[-1]
         loc1 = ( photo.latitude, photo.longitude)
         loc2 = ( photo.latitude_calculated, photo.longitude_calculated)
@@ -116,7 +126,13 @@ def csv_write_image_location(photo):
         line = [photo_name, str(photo.latitude), str(photo.longitude), str(photo.latitude_calculated), str(photo.longitude_calculated), str(lat_error), str(lon_error), str(dist_error), str(drone_image.corrected), str(drone_image.matched), str(drone_image.gimball_yaw + drone_image.flight_yaw - 15)]
         writer.writerow(line)
 
+
 def calculate_geo_pose(geo_photo, center, features_mean,  shape):
+    """
+    Calculates the geographical location of the drone image.
+    Input: satellite geotagged image, pixel center of the drone image,
+    pixel coordinatess (horizontal and vertical) of where the features are localted in the sat image, shape of the sat image
+    """
      #use ratio here instead of pixels because image is reshaped in superglue
     query_lat = 0.001
     query_lon = 0.00263
@@ -127,19 +143,18 @@ def calculate_geo_pose(geo_photo, center, features_mean,  shape):
     
     print("Old coord: ", center, latitude, longitude)
     print("New coord: ", corrected_lat, corrected_lon)
-    #input("press enter ")
     return latitude, longitude, corrected_lat, corrected_lon
 
 
 
-
+#######################################
+# MAIN
+#######################################
 
 #Read all the geo tagged images that make up the sattelite map used for reference
-map_filename = "../assets/map/map.csv"
-print("opening: ", map_filename)
+
 geo_images_list = csv_read_sat_map(map_filename)
-#drone_images_list = csv_read_drone_images("../photos/query/real_dataset_1/matrice_300_session_1/drone_image_test.csv")
-drone_images_list = csv_read_drone_images("../assets/query/photo_metadata.csv")
+drone_images_list = csv_read_drone_images(drone_photos_filename)
 print(drone_images_list[0])
 #drone_image = cv2.imread("../photos/query/real_dataset_1/matrice_300_session_1/photo_2.JPG", 0)
 
