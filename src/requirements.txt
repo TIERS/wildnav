@@ -1,6 +1,6 @@
 haversine==2.5.1
 matplotlib==3.1.2
-numpy==1.17.4
+numpy>=1.17.4
 opencv_contrib_python==4.5.5.64
 pandas==1.4.1
 scikit_learn==1.1.2
