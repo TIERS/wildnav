@@ -1,3 +1,5 @@
+![ubuntu label](https://img.shields.io/badge/Ubuntu-20.04-brightgreen)
+![build passing label](https://img.shields.io/badge/build-passing-brightgreen)
 # WildNav: GNSS-Free drone navigation and localization in the wild
 
 ###  Abstract
