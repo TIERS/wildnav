@@ -97,13 +97,11 @@ def csv_read_sat_map(filename):
     with open(filename) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
-        print(csv_reader)
         for row in csv_reader:
             if line_count == 0:
                 print(f'Column names are {", ".join(row)}')
                 line_count += 1
-            else:   
-                print(row[0])             
+            else:            
                 img = cv2.imread(photo_path + row[0],0)
                 geo_photo = GeoPhoto(photo_path + row[0],img,(float(row[1]),float(row[2])), (float(row[3]), float(row[4])))
                 geo_list.append(geo_photo)
@@ -134,17 +132,11 @@ def calculate_geo_pose(geo_photo, center, features_mean,  shape):
     (center with x = 0.5 and y = 0.5 means the located features are in the middle of the sat image)
     pixel coordinatess (horizontal and vertical) of where the features are localted in the sat image, shape of the sat image
     """
-     #use ratio here instead of pixels because image is reshaped in superglue
-    query_lat = 0.001
-    query_lon = 0.00263
+    #use ratio here instead of pixels because image is reshaped in superglue    
     latitude = geo_photo.top_left_coord[0] + abs( center[1])  * ( geo_photo.bottom_right_coord[0] - geo_photo.top_left_coord[0])
     longitude = geo_photo.top_left_coord[1] + abs(center[0])  * ( geo_photo.bottom_right_coord[1] - geo_photo.top_left_coord[1])
-    corrected_lat = latitude -  ((shape[1] / 2  - features_mean[1]) / shape[1]) * query_lat
-    corrected_lon = longitude + ((shape[0] / 2  - features_mean[0]) / shape[0])  * query_lon
     
-    print("Old coord: ", center, latitude, longitude)
-    print("New coord: ", corrected_lat, corrected_lon)
-    return latitude, longitude, corrected_lat, corrected_lon
+    return latitude, longitude
 
 
 
@@ -164,7 +156,7 @@ longitude_truth = []
 latitude_calculated = []
 longitude_calculated = []
 
-print("The following drone images were loaded: ",drone_images_list)
+print(str(len(drone_images_list)) + "drone photos were loaded.")
 
 
 # Iterate through all the drone images
@@ -209,7 +201,7 @@ for drone_image in drone_images_list:
         current_location = calculate_geo_pose(geo_images_list[satellite_map_index], center, features_mean, query_image.shape )
         
         # Write the results to the image result file with the best match
-        cv2.putText(located_image, "Calculated: " + str(current_location[0:2]), org = (10,625),fontFace =  cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.8,  color = (0, 0, 0))
+        cv2.putText(located_image, "Calculated: " + str(current_location), org = (10,625),fontFace =  cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.8,  color = (0, 0, 0))
         cv2.putText(located_image, "Ground truth: " + str(drone_image.latitude) + ", " + str(drone_image.longitude), org = (10,655),fontFace =  cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.8,  color = (0, 0, 0))
         cv2.imwrite("../results/" + photo_name + "_located.png", located_image)
         

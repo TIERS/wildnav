@@ -45,6 +45,18 @@ images (right) </p>
       python3 feature_matching_superglue.py
       ```
 
+
+## Add your own drone image dataset
+1. Add your drone photos to ```assets/query```. Feel free to use our dataset from [here](https://utufi.sharepoint.com/:f:/s/msteams_0ed7e9/EsXaX0CKlpxIpOzVnUmn8-sB4yvmsxUohqh1d8nWKD9-BA?e=gPca2s).
+2. Add your satellite map images to ```assets/map``` together with a csv file containing geodata for the images (see ```assets/map/map.csv```) 
+3. Run python script to generate csv file containing photo metadata with GNSS coordinates
+   ```
+   python3 extract_image_meta_exif.py
+   ```
+4. Run wildnav algorithm
+   ```
+   python3 feature_matching_superglue.py
+   ```
 ## Common problems and fixes
 
 1. Runtime error due to incompatible version of ```torch``` installed
@@ -63,7 +75,7 @@ Follow instructions on the official [pytorch](https://pytorch.org/get-started/lo
 **Fix:**
 
 
-The algorithm can run, albeit much slower, on CPU. Simply change ```force_cpu``` flag in ```src/superglue_utils``` to ```True```.
+The algorithm can run, albeit much slower, on CPU. Simply change ```force_cpu``` flag in ```src/superglue_utils.py``` to ```True```.
 
 
 ## Datasets
@@ -114,3 +126,6 @@ located at 60.403091° latitude and 22.461824° longitude </p>
 <img src="assets/overview/error_comparison.png" width="800px">
 <p align="center">Error comparison </p>
 </div>
+
+## Contact
+Feel free to send me an email at mmgurg@utu.fi if you have any questions about the project.
