@@ -6,7 +6,9 @@ from matplotlib import rcParams
 from sklearn.metrics import mean_squared_error 
 from sklearn.metrics import mean_absolute_error
 
-
+############################################################################
+# Script what plots ground truth coordinates and calculated coordinates 
+############################################################################
 
 def mse(actual, predicted):
     return np.square(np.subtract(np.array(actual), np.array(predicted))).mean()
@@ -20,8 +22,6 @@ sns.set(font_scale = 2)
 plt.rcParams['font.sans-serif'] = ['Arial']
 plt.rcParams['axes.edgecolor'] = 'white'
 plt.rcParams['axes.unicode_minus'] = False
-#plt.rcParams['figure.figsize'] = 15,8
-
 filename = "calculated_coordinates_real_data_1.csv"
 
 

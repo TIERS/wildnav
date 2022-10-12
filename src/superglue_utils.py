@@ -98,14 +98,12 @@ def match_image():
 
     timer = AverageTimer()
 
-    satellite_map_index = None
-    index = 0
-    max_matches = -1 
-    MATCHED = False
-    located_image = cv2.imread("/home/marius/Desktop/Thesis_gl_hf/Wild_Nav_Master_Thesis/photos/google_earth_cover.png")
-    features_mean = [0,0] #mean values of feature point coordinates
-    query_image = located_image
-    feature_number = 0
+    satellite_map_index = None # index of the satellite photo in the map where the best match was found
+    index = 0 # index of the sattelite photo if a match was found
+    max_matches = -1 # max number of matches, used to keep track of the best match
+    MATCHED = False # flag to indicate if a match was found
+    located_image = None # the image of the satellite photo where the best match was found
+    features_mean = [0,0] # mean values of feature pixel coordinates 
 
     while True:
         
@@ -133,36 +131,25 @@ def match_image():
         mkpts1 = kpts1[matches[valid]]
 
         """
-        Find image in sattelite map with findHomography
-        ******************************************
+        Find image in sattelite map with findHomography        
         """
         #At least 4 matched features are needed to compute homography
         MATCHED = False
-        #located_image = last_frame
         print("Number of matches:", len(mkpts1))
         if (len(mkpts1) >= 4): 
             perspective_tranform_error = False           
             M, mask = cv2.findHomography(mkpts0, mkpts1, cv2.RANSAC,5.0)
             print("valid features:", mkpts1)
-            query_image = last_frame
-            #cv2.imshow("features", last_frame)
-            #cv2.waitKey()
-            #cv2.destroyAllWindows()
-            matchesMask = mask.ravel().tolist()
             h,w = last_frame.shape
-            #h = 400
-            #w = 500
             print('Frame shape: ',last_frame.shape)
             cv2.waitKey()
             pts = np.float32([ [0,0],[0,h-1],[w-1,h-1],[w-1,0] ]).reshape(-1,1,2)
-            print("Points for perspective transform: ", pts)
             try: 
                 dst = cv2.perspectiveTransform(pts,M)
             except:
                 print("Perspective transform error")
                 perspective_tranform_error = True    
-            
-            cv2.waitKey()
+
             if (len(mkpts1) > max_matches) and not perspective_tranform_error:   
                 print("Rectangle ", dst)
                 frame = cv2.polylines(frame,[np.int32(dst)],True,255,3, cv2.LINE_AA) 
@@ -172,14 +159,11 @@ def match_image():
                 center = (cX  ,cY) #shape[0] is Y coord, shape[1] is X coord
                 #use ratio here instead of pixels because image is reshaped in superglue
                 features_mean = np.mean(mkpts0, axis = 0)
-                print("Features mean: ", features_mean)
-                print("Center: ", center)
-                print(frame.shape[0], frame.shape[1])
+
+                #Draw the center of the area which has been matched
                 cv2.circle(frame, center, radius = 10, color = (255, 0, 255), thickness = 5)
                 cv2.circle(last_frame, (int(features_mean[0]), int(features_mean[1])), radius = 10, color = (255, 0, 0), thickness = 2)
                 center = (cX / frame.shape[1] ,cY /frame.shape[0] )
-                # cv2.imshow("map", frame)
-                # cv2.waitKey()
                 satellite_map_index = index
                 max_matches = len(mkpts1)
                 MATCHED = True
@@ -188,11 +172,6 @@ def match_image():
             print("Photos were NOT matched")
       
         color = cm.jet(confidence[valid])
-        text = [
-            'SuperGlue',
-            'Keypoints: {}:{}'.format(len(kpts0), len(kpts1)),
-            'Matches: {}'.format(len(mkpts0))
-        ]
         k_thresh = matching.superpoint.config['keypoint_threshold']
         m_thresh = matching.superglue.config['match_threshold']
         small_text = [
@@ -200,9 +179,7 @@ def match_image():
             'Match Threshold: {:.2f}'.format(m_thresh),
             'Image Pair: {:06}:{:06}'.format(stem0, stem1),
         ]
-
-        cv2.imwrite("Frame.jpg", frame)
-        cv2.imwrite("Last_Frame.jpg", last_frame)
+     
         out = make_matching_plot_fast(
             last_frame, frame, kpts0, kpts1, mkpts0, mkpts1, color, text='',
             path=None, show_keypoints=show_keypoints, small_text='')
@@ -242,9 +219,7 @@ def match_image():
                 show_keypoints = not show_keypoints
 
         timer.update('viz')
-        timer.print()
-        print("Index: ", index)
-        #cv2.waitKey()    
+        timer.print()  
         index += 1  
 
         if output_dir is not None:
