@@ -1,11 +1,8 @@
-color_mask==0.1.0
 haversine==2.5.1
-imutils==0.5.4
 matplotlib==3.1.2
-numpy==1.23.3
+numpy==1.17.4
 opencv_contrib_python==4.5.5.64
 pandas==1.4.1
 scikit_learn==1.1.2
 seaborn==0.12.0
-tikzplotlib==0.10.1
 torch==1.12.1
