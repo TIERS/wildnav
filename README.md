@@ -37,7 +37,7 @@ The main advantage of Wildnav is its capability of matching drone images (left) 
 
 ## How to run
 
-   0. [Highly recommended) Create a new python3 virtual environment
+   0. **(Highly recommended)** Create a new python3 virtual environment
       ```
       python3 -m venv env 
       source env/bin/activate # activate the virtual env
