@@ -145,12 +145,11 @@ def calculate_geo_pose(geo_photo, center, features_mean,  shape):
 #######################################
 
 #Read all the geo tagged images that make up the sattelite map used for reference
-
 geo_images_list = csv_read_sat_map(map_filename)
+
+#Read all the geo tagged drone that will located in the map
 drone_images_list = csv_read_drone_images(drone_photos_filename)
 
-#write the query image to the map folder
-#the query will be matched to every sattelite map image
 latitude_truth = []
 longitude_truth = []
 latitude_calculated = []
