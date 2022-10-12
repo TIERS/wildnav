@@ -141,10 +141,7 @@ def match_image():
         if (len(mkpts1) >= 4): 
             perspective_tranform_error = False           
             M, mask = cv2.findHomography(mkpts0, mkpts1, cv2.RANSAC,5.0)
-            print("valid features:", mkpts1)
             h,w = last_frame.shape
-            print('Frame shape: ',last_frame.shape)
-            cv2.waitKey()
             pts = np.float32([ [0,0],[0,h-1],[w-1,h-1],[w-1,0] ]).reshape(-1,1,2)
             try: 
                 dst = cv2.perspectiveTransform(pts,M)
