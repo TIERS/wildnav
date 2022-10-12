@@ -4,7 +4,9 @@
 
 Considering the accelerated development of Unmanned Aerial Vehicles (UAVs) applications in both industrial and research scenarios, there is an increasing need for localizing these aerial systems in non-urban environments, using GNSS-Free, vision-based methods. Our paper proposes a vision-based localization algorithm that utilizes deep features to compute geographical coordinates of a UAV flying in the wild. The method is based on matching salient features of RGB photographs captured by the drone camera and sections of a pre-built map consisting of georeferenced open-source satellite images. Experimental results prove that vision-based localization has comparable accuracy with traditional GNSS-based methods, which serve as ground truth. Compared to state-of-the-art Visual Odometry (VO) approaches, our solution is designed for long-distance, high-altitude UAV flights.
 
-### Algorithm Overview
+### Overview
+
+The main advantage of Wildnav is its capability of matching drone images (left) with georeferenced satellite images (right), in spite of the drone flying in non-urban areas, in environments with sparse features.
 
 <div align=center>
 <img src="assets/overview/project_overview.png" width="800px">
@@ -12,9 +14,21 @@ Considering the accelerated development of Unmanned Aerial Vehicles (UAVs) appli
 </div>
 
 <div align=center>
-<img src="assets/overview/good_match_examples.png" width="800px">
-<p align="center">Examples of successfully matched drones photographs (left) and satellite
-images (right) </p>
+<img src="assets/overview/good_match_1.png" width="800px">
+<p align="center"> Robust against rotation </p>
+
+<div align=center>
+<img src="assets/overview/good_match_2.png" width="800px">
+<p align="center"> Able to visually identify the drone pose even in environments with sparse feature </p>
+
+<div align=center>
+<img src="assets/overview/good_match_3.png" width="800px">
+<p align="center"> The drone image (left) can be taken from a very different perspective, compared to the matched satellite image(right) </p>
+
+<div align=center>
+<img src="assets/overview/good_match_4.png" width="800px">
+<p align="center"> Successful visual-based localization in non-urban areas </p>
+
 </div>
 
 
@@ -77,6 +91,7 @@ Follow instructions on the official [pytorch](https://pytorch.org/get-started/lo
 
 The algorithm can run, albeit much slower, on CPU. Simply change ```force_cpu``` flag in ```src/superglue_utils.py``` to ```True```.
 
+**NOTE**: If you encounter any problems which are not listed here, please open a new issue in this repository. We will try to fix it as soon as possible.
 
 ## Datasets
 
