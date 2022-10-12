@@ -34,6 +34,7 @@ def match_image():
     match_threshold = 0.5 # Remove matches with low confidence. Set to -1 to keep all matches.
     show_keypoints = True # Show the detected keypoints.
     no_display = True
+    force_cpu = True # Force CPU mode. It is significantly slower, but allows the model to run on systems withou dedicated GPU.
     
    
     if len(resize) == 2 and resize[1] == -1:
@@ -48,7 +49,8 @@ def match_image():
     else:
         raise ValueError('Cannot specify more than two integers for --resize')
 
-    device = 'cuda'
+    
+    device = 'cuda' if torch.cuda.is_available() and not force_cpu else 'cpu'
     print('Running inference on device \"{}\"'.format(device))
     config = {
         'superpoint': {
@@ -186,7 +188,6 @@ def match_image():
 
         if MATCHED == True:
             located_image = out
-            cv2.imwrite("located_image.png", located_image)
         
 
         if not no_display:
