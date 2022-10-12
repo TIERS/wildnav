@@ -155,7 +155,7 @@ longitude_truth = []
 latitude_calculated = []
 longitude_calculated = []
 
-print(str(len(drone_images_list)) + "drone photos were loaded.")
+print(str(len(drone_images_list)) + " drone photos were loaded.")
 
 
 # Iterate through all the drone images

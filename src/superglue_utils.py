@@ -33,7 +33,7 @@ def match_image():
     sinkhorn_iterations = 20 # Number of Sinkhorn iterations for matching.
     match_threshold = 0.5 # Remove matches with low confidence. Set to -1 to keep all matches.
     show_keypoints = True # Show the detected keypoints.
-    no_display = True
+    no_display = False
     force_cpu = False # Force CPU mode. It is significantly slower, but allows the model to run on systems withou dedicated GPU.
     
    
@@ -89,14 +89,6 @@ def match_image():
         cv2.resizeWindow('SuperGlue matches', 640*2*2, 480*2)
     else:
         print('Skipping visualization, will not show a GUI.')
-
-    # Print the keyboard help menu.
-    print('==> Keyboard control:\n'
-          '\tn: select the current frame as the anchor\n'
-          '\te/r: increase/decrease the keypoint confidence threshold\n'
-          '\td/f: increase/decrease the match filtering threshold\n'
-          '\tk: toggle the visualization of keypoints\n'
-          '\tq: quit')
 
     timer = AverageTimer()
 
