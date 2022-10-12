@@ -59,6 +59,10 @@ pip3 uninstall torch
 Follow instructions on the official [pytorch](https://pytorch.org/get-started/locally/) website to install the right version of torch for your system (it depends on your graphics card and CUDA version).
 
 2. No dedicated GPU available on your system.
+
+**Fix:**
+
+
 The algorithm can run, albeit much slower, on CPU. Simple change ```force_cpu``` flag in ```src/superglue_utils``` to ```True```.
 
 
