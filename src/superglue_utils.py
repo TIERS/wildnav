@@ -34,7 +34,7 @@ def match_image():
     match_threshold = 0.5 # Remove matches with low confidence. Set to -1 to keep all matches.
     show_keypoints = True # Show the detected keypoints.
     no_display = True
-    force_cpu = True # Force CPU mode. It is significantly slower, but allows the model to run on systems withou dedicated GPU.
+    force_cpu = False # Force CPU mode. It is significantly slower, but allows the model to run on systems withou dedicated GPU.
     
    
     if len(resize) == 2 and resize[1] == -1:
