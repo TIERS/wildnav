@@ -16,19 +16,21 @@ The main advantage of Wildnav is its capability of matching drone images (left) 
 <div align=center>
 <img src="assets/overview/good_match_1.png" width="800px">
 <p align="center"> Robust against rotation </p>
+</div>
 
 <div align=center>
 <img src="assets/overview/good_match_2.png" width="800px">
 <p align="center"> Able to visually identify the drone pose even in environments with sparse feature </p>
+</div>
 
 <div align=center>
 <img src="assets/overview/good_match_3.png" width="800px">
 <p align="center"> The drone image (left) can be taken from a very different perspective, compared to the matched satellite image(right) </p>
+</div>
 
 <div align=center>
 <img src="assets/overview/good_match_4.png" width="800px">
 <p align="center"> Successful visual-based localization in non-urban areas </p>
-
 </div>
 
 
