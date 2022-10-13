@@ -1,3 +1,5 @@
+![ubuntu label](https://img.shields.io/badge/Ubuntu-20.04-brightgreen)
+[![build passing label](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/TIERS/wildnav/actions/workflows/python-app.yml)
 # WildNav: GNSS-Free drone navigation and localization in the wild
 
 ###  Abstract
@@ -37,7 +39,10 @@ The main advantage of Wildnav is its capability of matching drone images (left) 
 
 ## How to run
 
-   0. [Highly recommended) Create a new python3 virtual environment
+The algorithm was tested on Ubuntu 20.04 with Python 3.10. Nevertheless, it should work with other versions as well.
+
+
+   0. **(Highly recommended)** Create a new python3 virtual environment
       ```
       python3 -m venv env 
       source env/bin/activate # activate the virtual env
@@ -49,6 +54,7 @@ The main advantage of Wildnav is its capability of matching drone images (left) 
       ```
    3. Install superglue dependencies:
       ```
+      cd wildnav
       git submodule update --init --recursive
       ```
    3. Install python dependencies
