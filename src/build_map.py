@@ -1,19 +1,43 @@
 # importing the requests library
+from numpy import size
 import requests
 import shutil
-  
 
-URL = "https://maps.googleapis.com/maps/api/staticmap?center=Turku+Finland,NY&zoom=17&size=1920x1080&maptype=satellite&markers=color:blue|label:S|40.702147,-74.015794&markers=color:green|label:G|40.711614,-74.012318&markers=color:red|label:C|40.718217,-73.998284&key=AIzaSyAclBCbWo0rwQIaezGcXM6X3S_Otv-hHOQ"
+# These 2 varibles determine the number of images that form the map
+flight_zone = None #define as a pair of coordinates determining a rectangle in which the satellite photos will be taken
+patch_size = None #define as height (latitude) and width (longitude) of the patch to be taken
+
+center = "60.403066,22.462214"
+zoom = "18"
+size = "640x640"
+maptype = "satellite"
+scale = "2"
+key = "AIzaSyAclBCbWo0rwQIaezGcXM6X3S_Otv-hHOQ"
+
+#URL = "https://maps.googleapis.com/maps/api/staticmap?center=60.403066,22.462214&zoom=18&size=640x640&scale=2&maptype=satellite&key=AIzaSyD3uC7jYBv2UDe6NO5bx8iWJ2cHIjdPSO0"
+
+OLD_URL =  "https://maps.googleapis.com/maps/api/staticmap?center=60.403066,22.462214&zoom=18&size=640x640&scale=2&maptype=satellite&key=AIzaSyD3uC7jYBv2UDe6NO5bx8iWJ2cHIjdPSO0" 
+URL = "https://maps.googleapis.com/maps/api/staticmap?"
   
-# location given here
-#location = "finland turku"
-  
-# defining a params dict for the parameters to be sent to the API
-#PARAMS = {'address':location}
+#defining a params dict for the parameters to be sent to the API
+
+PARAMS = {'center':center,
+          'zoom':zoom,
+          'size':size,
+          'scale':scale,
+          'maptype':maptype,
+          'key':key
+        }
+          
   
 # sending get request and saving the response as response object
 #r = requests.get(url = URL, params = PARAMS)
-r = requests.get(url = URL, stream=True)
+r = requests.get(url = URL, params = PARAMS, stream=True)
 
-with open('img.png', 'wb') as out_file:
-    shutil.copyfileobj(r.raw, out_file)
+
+if r.status_code == 200:
+    with open('img.png', 'wb') as out_file:
+        shutil.copyfileobj(r.raw, out_file)
+        print("image downloaded")
+else:
+    print("Error ", r.status_code)
