@@ -106,7 +106,7 @@ index = 0 # index of the current image
 # build map by downloading and stitching together satellite images
 for i in range(0, height):
     for j in range(0, width):
-        photo_name = 'sat_patch' + '_' + str(index) + '.png'
+        photo_name = 'sat_patch' + '_' + f"{index:04d}"+ '.png'
 
         #send GET request to the API which returns a satellite image upon success
         r = requests.get(url = URL, params = PARAMS, stream=True, timeout=10)
