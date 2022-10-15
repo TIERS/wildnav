@@ -1,4 +1,4 @@
-"""Module used for writing csv files"""
+"""Module used for automatically building satellite maps with Google Maps API"""
 import csv
 import math
 import shutil

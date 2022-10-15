@@ -1,15 +1,16 @@
-import cv2
+"""Core module. Contains the main functions for the project."""
 import csv
-import superglue_utils
-
+import cv2
 import haversine as hs
 from haversine import Unit
+import superglue_utils
 
 ############################################################################################################
 # Important variables
 ############################################################################################################
 
-map_filename = "../assets/map/map.csv" #  csv file with the sattelite geo tagged images
+map_path = "../assets/maps/map_1/"
+map_filename = "../assets/maps/map_1/map.csv" #  csv file with the sattelite geo tagged images
 drone_photos_filename = "../assets/query/photo_metadata.csv" # csv file with the geo tagged drone images;
                                                              # the geo coordinates are only used to compare
                                                              # the calculated coordinates with the real ones
@@ -177,7 +178,7 @@ for drone_image in drone_images_list:
     for rot in rotations:
         
         # Write the query photo to the map folder
-        cv2.imwrite("../assets/map/1_query_image.png", photo)
+        cv2.imwrite(map_path + "1_query_image.png", photo)
 
         #Call superglue wrapper function to match the query image to the map
         satellite_map_index_new, center_new, located_image_new, features_mean_new, query_image_new, feature_number = superglue_utils.match_image()

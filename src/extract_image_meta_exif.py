@@ -1,9 +1,9 @@
+"""Script that reads the EXIF data from the drone images and extracts the GNSS coordinates to a csv file"""
 import subprocess
 import re
 import os
 
 ############################################################################################################
-# Script that reads the EXIF data from the drone images and extracts the GNSS coordinates to a csv file
 # Requires exiftool to be installed: https://exiftool.org/
 # You might have to modify the scripts to match the EXIF metadata of your drone photos 
 # Use https://www.metadata2go.com/ to easily check the metadata of your images

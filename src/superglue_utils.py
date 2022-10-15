@@ -17,7 +17,7 @@ def match_image():
     Wrapper function for matching two images, provides an interface to superglue model
     """
     center = None
-    input = '../assets/map/'
+    input = '../assets/maps/map_1/'
     output_dir = "../results"
     image_glob = ['*.png', '*.jpg', '*.jpeg', '*.JPG']
     skip = 1
