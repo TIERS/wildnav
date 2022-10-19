@@ -2,7 +2,7 @@
 [![build passing label](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/TIERS/wildnav/actions/workflows/python-app.yml)
 # WildNav: GNSS-Free drone navigation and localization in the wild
 
-Check out our paper [here](https://tiers.utu.fi/paper/marius2022vision)
+Check out our paper on [TIERS](https://tiers.utu.fi/paper/marius2022vision) official website.
 
 ###  Abstract
 
