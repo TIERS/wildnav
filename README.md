@@ -2,6 +2,8 @@
 [![build passing label](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/TIERS/wildnav/actions/workflows/python-app.yml)
 # WildNav: GNSS-Free drone navigation and localization in the wild
 
+Check out our paper [here](https://tiers.utu.fi/paper/marius2022vision)
+
 ###  Abstract
 
 Considering the accelerated development of Unmanned Aerial Vehicles (UAVs) applications in both industrial and research scenarios, there is an increasing need for localizing these aerial systems in non-urban environments, using GNSS-Free, vision-based methods. Our paper proposes a vision-based localization algorithm that utilizes deep features to compute geographical coordinates of a UAV flying in the wild. The method is based on matching salient features of RGB photographs captured by the drone camera and sections of a pre-built map consisting of georeferenced open-source satellite images. Experimental results prove that vision-based localization has comparable accuracy with traditional GNSS-based methods, which serve as ground truth. Compared to state-of-the-art Visual Odometry (VO) approaches, our solution is designed for long-distance, high-altitude UAV flights.
