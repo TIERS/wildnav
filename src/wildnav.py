@@ -9,8 +9,8 @@ import superglue_utils
 # Important variables
 ############################################################################################################
 
-map_path = "../assets/maps/map_1/"
-map_filename = "../assets/maps/map_1/map.csv" #  csv file with the sattelite geo tagged images
+map_path = "../assets/map/"
+map_filename = "../assets/map/map.csv" #  csv file with the sattelite geo tagged images
 drone_photos_filename = "../assets/query/photo_metadata.csv" # csv file with the geo tagged drone images;
                                                              # the geo coordinates are only used to compare
                                                              # the calculated coordinates with the real ones
