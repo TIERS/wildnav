@@ -1,8 +1,8 @@
 ![ubuntu label](https://img.shields.io/badge/Ubuntu-20.04-brightgreen)
 [![build passing label](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/TIERS/wildnav/actions/workflows/python-app.yml)
-# WildNav: GNSS-Free drone navigation and localization in the wild
+# WildNav: GNSS-Free Localization in the Wild
 
-Check out our paper on [TIERS](https://tiers.utu.fi/paper/marius2022vision) official website. Access dataset [here](https://utufi.sharepoint.com/:f:/s/msteams_0ed7e9/EsXaX0CKlpxIpOzVnUmn8-sB4yvmsxUohqh1d8nWKD9-BA?e=gPca2s).
+Check out our paper at the [TIERS website](https://tiers.utu.fi/paper/marius2022vision). Access a sample [dataset here](https://utufi.sharepoint.com/:f:/s/msteams_0ed7e9/EsXaX0CKlpxIpOzVnUmn8-sB4yvmsxUohqh1d8nWKD9-BA?e=gPca2s).
 
 ###  Abstract
 
@@ -10,7 +10,7 @@ Considering the accelerated development of Unmanned Aerial Vehicles (UAVs) appli
 
 ### Overview
 
-The main advantage of Wildnav is its capability of matching drone images (left) with georeferenced satellite images (right), in spite of the drone flying in non-urban areas, in environments with sparse features.
+The main advantage of Wildnav is its capability of matching drone images (left) with georeferenced satellite images (right). The aim is for this to work for drones flying in non-urban areas, in environments with sparse features.
 
 <div align=center>
 <img src="assets/overview/project_overview.png" width="800px">
@@ -39,7 +39,7 @@ The main advantage of Wildnav is its capability of matching drone images (left) 
 
 
 
-## How to run
+## Run it yourself
 
 The algorithm was tested on Ubuntu 20.04 with Python 3.10. Nevertheless, it should work with other versions as well.
 
@@ -47,10 +47,12 @@ The algorithm was tested on Ubuntu 20.04 with Python 3.10. Nevertheless, it shou
    0. **(Highly recommended)** Create a new python3 virtual environment
       ```
       python3 -m venv env 
-      source env/bin/activate # activate the virtual env
-      which python3 # output should be ~/env/bin/python3
       ```
-   1. Clone repo
+      Activate it
+      ```
+      source env/bin/activate
+      ```
+   1. Clone the repo
       ```
       git clone git@github.com:TIERS/wildnav.git
       ```
@@ -63,24 +65,30 @@ The algorithm was tested on Ubuntu 20.04 with Python 3.10. Nevertheless, it shou
       ```
       pip3 install -r requirements.txt
       ```
-   4. Run
+   4. Run the localization script (see below to add a dataset, but you can try with a few samples already in the repo)
       ```
       cd src
-      python3 feature_matching_superglue.py
+      python3 wildnav.py
       ```
 
 
 ## Add your own drone image dataset
-1. Add your drone photos to ```assets/query```. Feel free to use our dataset from [here](https://utufi.sharepoint.com/:f:/s/msteams_0ed7e9/EsXaX0CKlpxIpOzVnUmn8-sB4yvmsxUohqh1d8nWKD9-BA?e=gPca2s).
-2. Add your satellite map images to ```assets/map``` together with a csv file containing geodata for the images (see ```assets/map/map.csv```) 
-3. Run python script to generate csv file containing photo metadata with GNSS coordinates
-   ```
-   python3 extract_image_meta_exif.py
-   ```
-4. Run wildnav algorithm
-   ```
-   python3 feature_matching_superglue.py
-   ```
+
+Before running the code, you need to have a dataset, reference images (map) 
+
+   1. Add your drone photos to ```assets/query```. Feel free to use our dataset from [here](https://utufi.sharepoint.com/:f:/s/msteams_0ed7e9/EsXaX0CKlpxIpOzVnUmn8-sB4yvmsxUohqh1d8nWKD9-BA?e=gPca2s).
+
+   2. Add your satellite map images to ```assets/map``` together with a csv file containing geodata for the images (see ```assets/map/map.csv```) 
+
+   3. Run python script to generate csv file containing photo metadata with GNSS coordinates
+      ```
+      python3 extract_image_meta_exif.py
+      ```
+   4. Run wildnav algorithm
+      ```
+      python3 wildnav.py
+      ```
+   
 ## Common problems and fixes
 
 1. Runtime error due to incompatible version of ```torch``` installed
