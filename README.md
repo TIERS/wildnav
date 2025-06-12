@@ -2,7 +2,8 @@
 [![build passing label](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/TIERS/wildnav/actions/workflows/python-app.yml)
 # WildNav: GNSS-Free Localization in the Wild
 
-Check out our paper at the [TIERS website](https://tiers.utu.fi/paper/marius2022vision). Access a sample [dataset here](https://utufi.sharepoint.com/:f:/s/msteams_0ed7e9/EsXaX0CKlpxIpOzVnUmn8-sB4yvmsxUohqh1d8nWKD9-BA?e=gPca2s).
+Check out our paper "Vision-Based GNSS-Free Localization for UAVs in the Wild" here [DOI](https://doi.org/10.1109/ICMERR56497.2022.10097798) or [UTU](https://research.utu.fi/converis/portal/detail/Publication/179738211?lang=fi_FI). 
+<!-- Access a sample [dataset here](https://utufi.sharepoint.com/:f:/s/msteams_0ed7e9/EsXaX0CKlpxIpOzVnUmn8-sB4yvmsxUohqh1d8nWKD9-BA?e=gPca2s).-->
 
 ###  Abstract
 
@@ -19,7 +20,7 @@ The main advantage of Wildnav is its capability of matching drone images (left) 
 
 <div align=center>
 <img src="assets/overview/good_match_1.png" width="800px">
-<p align="center"> Robust against rotation </p>
+<p align="center">Robust against rotation </p>
 </div>
 
 <div align=center>
